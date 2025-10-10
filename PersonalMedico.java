@@ -46,6 +46,6 @@ public abstract class PersonalMedico{
 
     @Override  
     public String toString(){
-        return "ID: " + ID + ", Nombre Completo: " + NCompleto + get.class().getSimpleName() + ", Departamento: " + Departamento + ", Años de Experiencia: " + AniosExperiencia + ", Salario Base: " + SalarioBase;
+        return "ID: " + ID + ", Nombre Completo: " + NCompleto + ", Departamento: " + Departamento + ", Años de Experiencia: " + AñosExperiencia + ", Salario Base: " + SalarioBase;
     }
 }

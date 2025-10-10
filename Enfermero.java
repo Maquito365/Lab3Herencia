@@ -33,7 +33,7 @@ public class Enfermero extends PersonalMedico{
     public double calcularSalario(){
         double salario = getSalarioBase();
         if(turno==true){
-            salario + bonoNocturno;
+            salario += bonoNocturno;
             return salario;
         }
         else{
