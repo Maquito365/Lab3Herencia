@@ -5,11 +5,11 @@ public abstract class PersonalMedico{
     private int AniosExperiencia;
     private int SalarioBase;
 
-    public PersonalMedico(int ID, String NCompleto, String Departamento, int AñosExperiencia, int SalarioBase){
+    public PersonalMedico(int ID, String NCompleto, String Departamento, int AniosExperiencia, int SalarioBase){
         this.ID = ID;
         this.NCompleto = NCompleto;
         this.Departamento = Departamento;
-        this.AñosExperiencia = AñosExperiencia;
+        this.AniosExperiencia = AniosExperiencia;
         this.SalarioBase = SalarioBase;
     }
     public abstract double calcularSalario();
@@ -31,11 +31,11 @@ public abstract class PersonalMedico{
     public void setDepartamento(String Departamento){
         this.Departamento = Departamento;
     }
-    public int getAñosExperiencia(){
-        return AñosExperiencia;
+    public int getAniosExperiencia(){
+        return AniosExperiencia;
     }
-    public void setAñosExperiencia(int AñosExperiencia){
-        this.AñosExperiencia = AñosExperiencia;
+    public void setAniosExperiencia(int AniosExperiencia){
+        this.AniosExperiencia = AniosExperiencia;
     }
     public int getSalarioBase(){
         return SalarioBase;

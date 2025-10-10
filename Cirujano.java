@@ -39,7 +39,7 @@ public class Cirujano extends PersonalMedico{
 
     @Override
     public double calcularSalario(){
-        return get.SalarioBase() + (HorasCirugia * TarifaPHora) + BonosPorRiesgo;
+        return getSalarioBase() + (HorasCirugia * TarifaPHora) + BonosPorRiesgo;
     }
 
 }
