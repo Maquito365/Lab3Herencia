@@ -44,8 +44,9 @@ public abstract class PersonalMedico{
         this.SalarioBase = SalarioBase;
     }   
 
-    @Override  
+   @Override  
     public String toString(){
-        return "ID: " + ID + ", Nombre Completo: " + NCompleto + ", Departamento: " + Departamento + ", Años de Experiencia: " + AñosExperiencia + ", Salario Base: " + SalarioBase;
+    return "ID: " + ID + ", Nombre Completo: " + NCompleto + ", Departamento: " + Departamento
+           + ", Años de Experiencia: " + AniosExperiencia + ", Salario Base: " + SalarioBase;
     }
 }
