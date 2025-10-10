@@ -40,9 +40,4 @@ public class DoctorGeneral extends PersonalMedico{
     public double calcularSalario() {
         return getSalarioBase() + (NConsultas * tarifaConsulta);
     }
-    @Override
-    public String toString() {
-        return super.toString() + "\nEspecializacion: " + especializacion + "\nCantidad de Pacientes por Dia: " + CPacientesDia +
-        "\nTarifa por Consulta: " + tarifaConsulta + "\nNumero de Consultas: " + NConsultas + "\nSalario Total: " + calcularSalario();
-    }
 }
