@@ -1,5 +1,5 @@
 import java.time.LocalDateTime;
-public class Main {
+public class Lab3 {
     public static void main(String[] args) {
         // Crear personal médico
         PersonalMedico medico1 = new DoctorGeneral(
