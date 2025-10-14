@@ -48,28 +48,23 @@ public class CitaMedica {
         return historialestados;
     } 
 
-    public void setEstado(EstadoCita nuevoEstado){
-        String entrada = LocalDateTime.now() + "Estado: " + this.estado + " -> " + nuevoEstado;
-        historialestados.add(entrada);
+    public void setEstado(EstadoCita nuevoEstado) {
+        registrarCambioEstado("Estado cambiado: " + this.estado + " -> " + nuevoEstado);
         this.estado = nuevoEstado;
-        System.out.println("Cita " + IDcita + " cambiada a estado: " + nuevoEstado);
-    } 
+    }
 
-    public void reagendarCita(LocalDateTime nuevaFecha, String motivo){
+    public void reagendarCita(LocalDateTime nuevaFecha, String motivo) {
         EntradasHistorial entrada = new EntradasHistorial(this.fechaHora, nuevaFecha, motivo);
         historialMedico.add(entrada);
         this.fechaHora = nuevaFecha;
         this.estado = EstadoCita.REAGENDADA;
         registrarCambioEstado("Reagendada a: " + nuevaFecha + " por motivo: " + motivo);
-        System.out.println("Cita " + IDcita + " reagendada para: " + nuevaFecha);
-        System.out.println("Paciente: " + nombrePaciente + "Médico: " + medicoAsignado.getNCompleto());
-        System.out.println("Motivo: " + motivo);
     }
 
     private void registrarCambioEstado(String texto) {
-        historialEstados.add(LocalDateTime.now() + " - " + texto);
+        historialestados.add(LocalDateTime.now() + " - " + texto);
     }
-
+    
     @Override
     public String toString() {
         return "CitaMedica{" +
