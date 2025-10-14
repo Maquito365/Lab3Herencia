@@ -64,16 +64,16 @@ public class CitaMedica {
     private void registrarCambioEstado(String texto) {
         historialestados.add(LocalDateTime.now() + " - " + texto);
     }
-    
+
     @Override
     public String toString() {
-        return "CitaMedica{" +
-                "IDcita=" + IDcita +
-                ", nombrePaciente='" + nombrePaciente + '\'' +
-                ", medicoAsignado=" + medicoAsignado.getNCompleto() +
-                ", fechaHora=" + fechaHora +
-                ", tipoCita=" + tipoCita +
-                ", estado=" + estado +
+        return "CitaMedica { " +
+                " IDcita= " + IDcita +
+                ", nombrePaciente= '" + nombrePaciente + '\'' +
+                ", medicoAsignado= " + medicoAsignado.getNCompleto() +
+                ", fechaHora= " + fechaHora +
+                ", tipoCita= " + tipoCita +
+                ", estado= " + estado +
                 '}';
     }
 
