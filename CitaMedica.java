@@ -32,6 +32,10 @@ public class CitaMedica {
     public PersonalMedico getMedicoAsignado() {
         return medicoAsignado;
     }
+    public void setMedicoAsignado(PersonalMedico medicoAsignado) {
+        this.medicoAsignado = medicoAsignado;
+        registrarCambioEstado("Médico reasignado a: " + medicoAsignado.getNCompleto());
+    }
     public LocalDateTime getFechaHora() {
         return fechaHora;
     }
