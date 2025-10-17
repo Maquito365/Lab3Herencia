@@ -1,37 +1,50 @@
 import java.time.LocalDateTime;
 public class Lab3 {
     public static void main(String[] args) {
-        // Crear personal médico
-        PersonalMedico medico1 = new DoctorGeneral(
-                101, "Juan Pérez", "Consultas", 5, 8000,
-                "Medicina Interna", 30, 150.0, 20
-        );
-        // Crear cita médica
-        CitaMedica cita1 = new CitaMedica(
-                1, "Pedro Gómez", medico1,
-                LocalDateTime.of(2025, 10, 20, 9, 0),
-                TipoCita.CONSULTA_GENERAL
-        );
-        // Mostrar información de la cita
-        System.out.println("=== Información Inicial ===");
-        System.out.println(cita1);
-        // Cambiar estado a CONFIRMADA
-        cita1.setEstado(EstadoCita.CONFIRMADA);
-        // Reagendar la cita
-        cita1.reagendarCita(LocalDateTime.of(2025, 10, 20, 11, 0),
-                "Conflicto horario del paciente");
-        // Mostrar historial de reagendamientos
-        System.out.println("\n=== Historial de Reagendamientos ===");
-        for (EntradasHistorial h : cita1.getHistorialMedico()) {
-            System.out.println(" - " + h);
-        }
-        // Mostrar historial de estados
-        System.out.println("\n=== Historial de Estados ===");
-        for (String s : cita1.getHistorialestados()) {
-            System.out.println(" - " + s);
-        }
-        // Mostrar salario del médico
-        System.out.println("\n=== Salario Calculado ===");
-        System.out.println(medico1.getNCompleto() + ": Q" + medico1.calcularSalario());
+        HospitalManager manager = new HospitalManager();
+
+        // === Personal médico ===
+        DoctorGeneral doc1 = new DoctorGeneral(1, "Dr. Ana López", "Medicina General", 10, 1500, 
+            "Medicina Interna", 20, 30.0, 50);
+        Cirujano cir1 = new Cirujano(2, "Dr. Mario Ruiz", "Cirugía", 8, 2500,
+            "Cardíaca", 15, 400, 200);
+        Terapeuta ter1 = new Terapeuta(3, "Lic. Carla Gómez", "Rehabilitación", 6, 1200,
+            "Fisioterapia", 45.0, 20.0, 40);
+        Enfermero enf1 = new Enfermero(4, "Enf. Juan Pérez", "Urgencias", 4, 800,
+            true, 2, 100);
+
+        // Contratar personal
+        manager.contratarPersonal(doc1);
+        manager.contratarPersonal(cir1);
+        manager.contratarPersonal(ter1);
+        manager.contratarPersonal(enf1);
+
+        // === Crear citas ===
+        LocalDateTime fecha = LocalDateTime.now().plusDays(1).withHour(9).withMinute(0);
+
+        CitaMedica cita1 = new CitaMedica(101, "Paciente A", doc1, fecha, TipoCita.CONSULTA_GENERAL);
+        CitaMedica cita2 = new CitaMedica(102, "Paciente B", doc1, fecha, TipoCita.CONSULTA_GENERAL); // misma hora
+        CitaMedica cita3 = new CitaMedica(103, "Paciente C", cir1, fecha.plusHours(2), TipoCita.CIRUGIA);
+        CitaMedica cita4 = new CitaMedica(104, "Paciente D", ter1, fecha.plusHours(3), TipoCita.TERAPIA);
+
+        // === Programar citas ===
+        manager.programarCita(cita1);
+        manager.programarCita(cita2); // causará reagendamiento automático
+        manager.programarCita(cita3);
+        manager.programarCita(cita4);
+
+        // === Forzar conflicto adicional ===
+        CitaMedica cita5 = new CitaMedica(105, "Paciente E", cir1, fecha.plusHours(2), TipoCita.CIRUGIA);
+        manager.programarCita(cita5); // conflicto con cita3
+
+        // === Reportes ===
+        manager.reportePersonal();
+        manager.reporteCitas();
+
+        // === Resolver conflictos restantes ===
+        manager.resolverConflictos();
+
+        // === Mostrar historial de reagendamientos ===
+        manager.mostrarHistorial();
     }
 }
