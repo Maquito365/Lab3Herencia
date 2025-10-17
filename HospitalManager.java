@@ -131,14 +131,14 @@ public class HospitalManager {
     }
 
     public void reporteCitas() {
-        System.out.println("\n📅 Reporte de Citas Médicas:");
+        System.out.println("\n Reporte de Citas Médicas:");
         for (CitaMedica c : citas) {
             System.out.println(c);
         }
     }
 
     public void mostrarHistorial() {
-        System.out.println("\n📖 Historial de cambios en citas:");
+        System.out.println("\n Historial de cambios en citas:");
         for (CitaMedica c : citas) {
             System.out.println("Cita ID " + c.getIDcita() + ":");
             for (EntradasHistorial h : c.getHistorialMedico()) {
